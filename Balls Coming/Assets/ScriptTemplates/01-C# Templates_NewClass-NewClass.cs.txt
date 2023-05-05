@@ -1,0 +1,9 @@
+using UnityEngine;
+
+namespace BallsComing
+{
+	public class #SCRIPTNAME# : MonoBehaviour
+	{
+		#NOTRIM#
+	}
+}
