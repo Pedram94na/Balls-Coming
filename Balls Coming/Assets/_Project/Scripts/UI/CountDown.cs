@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace BallsComing
 {
 	public class CountDown : MonoBehaviour
 	{
+        [SerializeField] private UnityEvent startGameEv;
+
 		private GameObject countDownPanel;
         private TextMeshProUGUI countDownText;
 
@@ -40,6 +43,9 @@ namespace BallsComing
             yield return new WaitForSeconds(1f);
 
             countDownText.text = null;
+
+            startGameEv.Invoke();
+
             Destroy(gameObject);
         }
     }

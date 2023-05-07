@@ -4,26 +4,23 @@ namespace BallsComing.Player.Animations
 {
 	public class JumpingAnimation : MonoBehaviour
 	{
+        private bool IsJumping => PlayerJumpStatsGetter() == 1;
+        private bool MovingRight => Input.GetAxis("Horizontal") >= 0;
+
+        [SerializeField] private float rotationSpeed = 300f;
+
         private void Update()
         {
-            int i = PlayerJumpStatsGetter();
-            switch (i)
-            {
-                case 0:
-                    break;
+            if (IsJumping)  AnimateJump();
+        }
 
-                case 1:
-                    transform.Rotate(0, 0, 60f * Time.deltaTime);
+        private void AnimateJump()
+        {
+            float zRotation = rotationSpeed * Time.deltaTime;
 
-                    break;
+            if (!MovingRight) transform.Rotate(0, 0, zRotation);
 
-                case 2:
-
-                    break;
-
-                default:
-                    break;
-            }
+            else transform.Rotate(0, 0, -zRotation);
         }
 
         private int PlayerJumpStatsGetter() { return (int)PlayerJump.playerJumpStats; }

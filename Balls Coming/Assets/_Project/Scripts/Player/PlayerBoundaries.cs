@@ -6,10 +6,10 @@ namespace BallsComing.Player
 	{
         private void Update()
         {
-            SetBounday();
+            SetBoundary();
         }
 
-        private void SetBounday()
+        private void SetBoundary()
         {
             float boundX = 10f;
             float clampedX = Mathf.Clamp(transform.position.x, -boundX, boundX);

@@ -1,11 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 namespace BallsComing.Player
 {
 	public class PlayerMovement : MonoBehaviour
 	{
-        private bool IsDashing => Input.GetButton("Dash");
+        private bool IsDashing => Input.GetButton("Dash") && dashReady;
+
         [SerializeField] private float speed = 10f;
+        private bool dashReady = true;
 
         public enum PlayerMovementStats
         {
@@ -31,23 +34,16 @@ namespace BallsComing.Player
 
             float x = Input.GetAxis("Horizontal");
 
-            if (x != 0) Movement(x);
+            if (x != 0) Move(x);
 
             if (x == 0) playerMovementStats = PlayerMovementStats.idle;
-        }
-
-        private Vector3 Movement(float x)
-        {
-            Vector3 move = speed * Time.deltaTime * x * Vector3.right;
-            transform.Translate(move);
-
-            return move;
         }
 
         private float SpeedSetter()
         {
             if (IsDashing)
             {
+                StartCoroutine(DashCoolDown());
                 speed = 20f;
                 playerMovementStats = PlayerMovementStats.fast;
 
@@ -58,6 +54,22 @@ namespace BallsComing.Player
             playerMovementStats = PlayerMovementStats.slow;
 
             return speed;
+        }
+
+        private IEnumerator DashCoolDown()
+        {
+            yield return new WaitForSeconds(1f);
+            dashReady = false;
+            yield return new WaitForSeconds(1f);
+            dashReady = true;
+        }
+
+        private Vector3 Move(float x)
+        {
+            Vector3 move = speed * Time.deltaTime * x * Vector3.right;
+            transform.Translate(move);
+
+            return move;
         }
     }
 }
