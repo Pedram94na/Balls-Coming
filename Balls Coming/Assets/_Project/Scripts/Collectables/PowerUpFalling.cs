@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BallsComing.Collectables.PowerUps
+namespace BallsComing.Collectables
 {
 	public class PowerUpFalling : MonoBehaviour
 	{

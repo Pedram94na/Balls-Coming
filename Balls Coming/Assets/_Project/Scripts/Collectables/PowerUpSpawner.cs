@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BallsComing.Collectables.PowerUps
+namespace BallsComing.Collectables
 {
 	public class PowerUpSpawner : MonoBehaviour
 	{
@@ -19,9 +19,6 @@ namespace BallsComing.Collectables.PowerUps
 
             for (int i = 0; i < powerUpsArrLength; i++)
                 powerUpsArr[i] = gameObject.transform.GetChild(i).gameObject;
-
-            for (int i = 0; i < powerUpsArrLength; i++)
-                Debug.Log(powerUpsArr[i].name);
         }
 
         private void Start()

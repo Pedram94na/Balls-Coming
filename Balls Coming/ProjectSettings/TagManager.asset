@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Ball Destroyer
   - Invincibility Power
+  - Ball4
   layers:
   - Default
   - TransparentFX

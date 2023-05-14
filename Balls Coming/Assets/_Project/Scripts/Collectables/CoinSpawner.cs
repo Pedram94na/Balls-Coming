@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BallsComing.Collectables.Coins
+namespace BallsComing.Collectables
 {
 	public class CoinSpawner : MonoBehaviour
 	{

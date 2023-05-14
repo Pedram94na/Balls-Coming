@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace BallsComing.Balls
+namespace BallsComing.Balls.Falling
 {
-	public class BallsSpawner : MonoBehaviour
+	public class FallingBallsSpawner : MonoBehaviour
 	{
 		private GameObject[] ballsArr;
         private int ballsArrLength;

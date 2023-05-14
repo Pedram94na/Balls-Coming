@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace BallsComing.Balls
+namespace BallsComing.Balls.Rolling
 {
-    public class BallsFalling : MonoBehaviour
-    {
+	public class BallsRoll : MonoBehaviour
+	{
         private bool ExcludingOriginals => OriginalBallsCheck();
 
-        [SerializeField] float speed;
+        [SerializeField] float speed = 5f;
         [SerializeField] float speedAddition = 2f;
 
         private static GameObject[] originalBallsArr;
@@ -14,15 +14,11 @@ namespace BallsComing.Balls
         private void Awake()
         {
             SetOriginalBallsArray();
-
-            if (this.CompareTag("Ball1")) speed = 10f;
-            if (this.CompareTag("Ball2")) speed = 5f;
-            if (this.CompareTag("Ball3")) speed = 3f;
         }
 
         private static void SetOriginalBallsArray()
         {
-            Transform originalBallsTr = GameObject.Find("Balls Original").transform;
+            Transform originalBallsTr = GameObject.Find("Balls Original Rolling").transform;
 
             int originalBallsArrLength = originalBallsTr.childCount;
             originalBallsArr = new GameObject[originalBallsArrLength];
@@ -45,12 +41,12 @@ namespace BallsComing.Balls
 
         private void Update()
         {
-            if (ExcludingOriginals) Fall();
+            if (ExcludingOriginals) Roll();
         }
 
-        private void Fall()
+        private void Roll()
         {
-            transform.Translate(speed * Time.deltaTime * Vector3.down);
+            transform.Translate(speed * Time.deltaTime * Vector3.left);
         }
 
         public void UpgradeSpeed()

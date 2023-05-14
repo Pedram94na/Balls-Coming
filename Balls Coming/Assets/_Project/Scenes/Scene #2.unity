@@ -227,6 +227,51 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &355508738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355508740}
+  - component: {fileID: 355508741}
+  m_Layer: 0
+  m_Name: Balls Original Rolling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355508740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355508738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -20, z: -2.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2803728121170518891}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355508741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355508738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281c832f7bf598a4d84fc77ed01d4d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &408374925
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,18 +781,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BallsComing.Collectables.CollectablesFalling, Collectables
-        m_MethodName: UpgradeSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 787680139}
         m_TargetAssemblyTypeName: BallsComing.Collectables.CollectablesFalling, Collectables
         m_MethodName: UpgradeSpeed
@@ -1077,7 +1110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1522,7 +1555,7 @@ Transform:
   - {fileID: 1133483467}
   - {fileID: 6723559012983813704}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &857504314
 MonoBehaviour:
@@ -1954,6 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cee94e0bc480b4d938f4bf42f30fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpTimer: 10
 --- !u!114 &1060924778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,7 +2385,7 @@ GameObject:
   - component: {fileID: 1284998331}
   - component: {fileID: 1284998332}
   m_Layer: 0
-  m_Name: Balls Original
+  m_Name: Balls Original Falling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2453,7 +2487,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369172526
 GameObject:
@@ -2685,7 +2719,7 @@ RectTransform:
   - {fileID: 2146337232}
   - {fileID: 57507998}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8170,6 +8204,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 857504313}
     m_Modifications:
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1060924777}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetDestroyerStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BallsComing.Core.GameManager, Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 409520621784020206, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 409520621784020212, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
       propertyPath: m_Name
       value: Ball Destroyer
@@ -8220,6 +8282,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431f9acb766b48b4ba7ed0cba7e8be3c, type: 3}
+--- !u!1001 &2007620828089344259
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 355508740}
+    m_Modifications:
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728937, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: m_Name
+      value: Ball4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410245998636728983, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+      propertyPath: GameOverEv.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1060924777}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
 --- !u!1001 &2712561535360921357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8281,6 +8404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc73fc11db423f4b817d20ddcf3c1e7, type: 3}
+--- !u!4 &2803728121170518891 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4410245998636728936, guid: fbb013f54d65d46418c8ea4d298749c5, type: 3}
+  m_PrefabInstance: {fileID: 2007620828089344259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3637570530530489625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8514,6 +8642,34 @@ PrefabInstance:
     - target: {fileID: 6289578341920666195, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
       propertyPath: m_Name
       value: Invincibility Power
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1060924777}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetInvincibleStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BallsComing.Core.GameManager, Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289578341920666205, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
+      propertyPath: PowerUpEve.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c15a667f2a6514aac017b3da201f7e, type: 3}
