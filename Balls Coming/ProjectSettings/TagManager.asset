@@ -4,22 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ball1
-  - Ball2
-  - Ball3
   - Coin
   - Ball Destroyer
   - Invincibility Power
-  - Ball4
+  - Blue Ball
+  - Ball2
+  - Ball1
+  - Ball3
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Powerups
+  - Balls
   - 
   - 
   - 

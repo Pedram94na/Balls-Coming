@@ -1,0 +1,16 @@
+{
+    "name": "Powerdowns",
+    "rootNamespace": "",
+    "references": [
+        "GUID:30ad7c43cc89ed248bc34974a3399aa8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

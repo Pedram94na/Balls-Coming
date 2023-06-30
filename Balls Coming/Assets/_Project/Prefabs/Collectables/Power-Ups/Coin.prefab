@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7922712990627516965}
   - component: {fileID: 4970974600150349377}
   - component: {fileID: 7949245661954844407}
-  - component: {fileID: 6723559012983813708}
-  - component: {fileID: 1877437286832252712}
-  m_Layer: 0
+  - component: {fileID: 2351185180281596555}
+  - component: {fileID: 6876096597295429882}
+  m_Layer: 6
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -33,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 88260430667270434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142581564665786048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -116,7 +117,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &6723559012983813708
+--- !u!114 &2351185180281596555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,12 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 142581564665786048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3e792b593f7f34a8520fac01250332, type: 3}
+  m_Script: {fileID: 11500000, guid: ae5d27181ce26d841904019af7f4b530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  speedAddition: 2
---- !u!114 &1877437286832252712
+--- !u!114 &6876096597295429882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,15 +138,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 142581564665786048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff87b12b4167e7c45bfe9a2ba6785341, type: 3}
+  m_Script: {fileID: 11500000, guid: 84da9776484840441a9fc7ce5939b472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectionEv:
+  collectabelEve:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BallsComing.UI.AddCoins, Assembly-CSharp
-        m_MethodName: CoinAdded
+        m_TargetAssemblyTypeName: BallsComing.UI.CoinCollection, Assembly-CSharp
+        m_MethodName: AddCoins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -157,3 +156,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &482774775078858441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1877437286832252715}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e9eb01998f8df9418f705cbc7ca311f, type: 2}
+    - target: {fileID: 919132149155446097, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_Name
+      value: Coin GFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+--- !u!4 &88260430667270434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0cf3fdcd4e1559c4d8ff551a9a4a4c94, type: 3}
+  m_PrefabInstance: {fileID: 482774775078858441}
+  m_PrefabAsset: {fileID: 0}

@@ -26,7 +26,7 @@ namespace BallsComing.Player
             playerRb = GetComponent<Rigidbody>();
             playerJumpStats = PlayerJumpStats.grounded;
 
-            playerGraphicsTr = GameObject.Find("Player GFX").transform;
+            playerGraphicsTr = transform.GetChild(0);
         }
 
         private void FixedUpdate()
@@ -44,14 +44,17 @@ namespace BallsComing.Player
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.name == "Ground")
+            if (collision.gameObject.CompareTag("Ground"))
             {
                 isGrounded = true;
 
                 playerJumpStats = PlayerJumpStats.grounded;
 
+                transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0f, 0f);
                 playerGraphicsTr.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0f, 0f);
             }
         }
+
+        private int PlayerPowerDownGetter() { return (int)Core.GameManager.playerPowerDownsStats; }
     }
 }

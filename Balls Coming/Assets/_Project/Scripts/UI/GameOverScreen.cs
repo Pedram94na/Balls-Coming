@@ -6,23 +6,37 @@ namespace BallsComing.UI
 {
 	public class GameOverScreen : MonoBehaviour
 	{
-        private struct ScoreSet
+        private struct ResultsSet
         {
-            public TextMeshProUGUI scoreText;
-            public TextMeshProUGUI highScoreText;
+            public TextMeshProUGUI coinsText;
+            public TextMeshProUGUI maxCoinsText;
+
+            public TextMeshProUGUI timeText;
+            public TextMeshProUGUI maxTimeText;
         }
-        private ScoreSet scoreSet;
+        private ResultsSet resultSet;
 
         private void Awake()
         {
-            scoreSet.scoreText = GameObject.Find("Final Score Text").GetComponent<TextMeshProUGUI>();
-            scoreSet.highScoreText = GameObject.Find("Final High Score Text").GetComponent<TextMeshProUGUI>();
+            resultSet.coinsText = GameObject.Find("Final Coins Text").GetComponent<TextMeshProUGUI>();
+            resultSet.maxCoinsText = GameObject.Find("Final Maximum Coins Text").GetComponent<TextMeshProUGUI>();
+
+            resultSet.timeText = GameObject.Find("Final Time Text").GetComponent<TextMeshProUGUI>();
+            resultSet.maxTimeText = GameObject.Find("Final Maximum Time Text").GetComponent<TextMeshProUGUI>();
         }
 
-        public void SetScoreSet()
+        private void Update()
         {
-            scoreSet.scoreText.text = $"Score: {ScoreCounter.scoreSet.score:0}";
-            scoreSet.highScoreText.text = $"High Score: {ScoreCounter.scoreSet.highScore}";
+            if (GameStatsGetter() == 2) ShowResults();
+        }
+
+        private void ShowResults()
+        {
+            resultSet.coinsText.text = $"Coins: {CoinCollection.coinData.coin:0}";
+            resultSet.maxCoinsText.text = $"Maximum Coins: {CoinCollection.coinData.maxCoin}";
+
+            resultSet.timeText.text = $"Time: {TimerManager.timerData.time:0}";
+            resultSet.maxTimeText.text = $"Maximum Time: {TimerManager.timerData.maxTime}";
         }
 
         public void LeaderboardsButton()
@@ -39,5 +53,7 @@ namespace BallsComing.UI
         {
             Application.Quit();
         }
+
+        private int GameStatsGetter() { return (int)Core.GameManager.gameStats; }
     }
 }
