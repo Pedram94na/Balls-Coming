@@ -30,9 +30,9 @@ namespace BallsComing.Balls
 
         private static GameObject[] originalBallsArr;
 
+        private GameObject player;
         private GameObject playerGFX;
         private ParticleSystem playerExplosionEffect;
-        private BoxCollider playerCollider;
 
         private void Awake()
         {
@@ -42,11 +42,9 @@ namespace BallsComing.Balls
 
             ballsOriginal = GameObject.Find("Balls Original");
 
-            GameObject player = GameObject.Find("Player");
-
+            player = GameObject.Find("Player");
             playerGFX = player.transform.GetChild(0).gameObject;
             playerExplosionEffect = player.transform.GetChild(1).GetComponent<ParticleSystem>();
-            playerCollider = player.GetComponent<BoxCollider>();
         }
 
         private static void SetOriginalBallsArray()
@@ -96,7 +94,7 @@ namespace BallsComing.Balls
                 switch (i)
                 {
                     case 0:
-                        StartCoroutine(PlayerExplosion(collision.gameObject));
+                        StartCoroutine(PlayerExplosion());
 
                         break;
 
@@ -108,21 +106,19 @@ namespace BallsComing.Balls
             }
         }
 
-        private IEnumerator PlayerExplosion(GameObject player)
+        private IEnumerator PlayerExplosion()
         {
             playerGFX.SetActive(false);
             playerExplosionEffect.Play();
 
-            playerCollider.enabled = false;
-            yield return new WaitForSeconds(1f);
-
-            Destroy(player);
-
             GameOverEv.Invoke();
 
-            Destroy(ballsOriginal);
+            yield return new WaitForSeconds(1f);
+            
+            Destroy(player);
 
             Destroy(gameObject);
+            Destroy(ballsOriginal);
         }
 
         #region Getters

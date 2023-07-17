@@ -11,12 +11,15 @@ namespace BallsComing.Interactable.Collectables
         private CollectablesParent[] collectablesArr;
         private int collectablesArrLength;
 
-        CollectablesParent newCollectables;
-        int collectablesArrIndex;
+        private CollectablesParent newCollectables;
+
+        private Transform spawnsTr;
 
         private void Awake()
         {
             SetBallsArr();
+
+            spawnsTr = GameObject.Find("Spawns").transform;
         }
 
         private void SetBallsArr()
@@ -64,20 +67,22 @@ namespace BallsComing.Interactable.Collectables
             {
                 newCollectables.SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot);
 
-                Instantiate(newCollectables.GetCollectableObj(), spawnPos, spawnRot);
+                GameObject newCollectableObj = Instantiate(newCollectables.GetCollectableObj(), spawnPos, spawnRot);
+                newCollectableObj.transform.parent = spawnsTr;
             }
         }
 
         private void SpawnPowerups()
         {
-            collectablesArrIndex = Random.Range(1, collectablesArrLength);
+            int collectablesArrIndex = Random.Range(1, collectablesArrLength);
             newCollectables = collectablesArr[collectablesArrIndex];
 
             if (newCollectables != null)
             {
                 newCollectables.SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot);
 
-                Instantiate(newCollectables.GetCollectableObj(), spawnPos, spawnRot);
+                GameObject newCollectableObj = Instantiate(newCollectables.GetCollectableObj(), spawnPos, spawnRot);
+                newCollectableObj.transform.parent = spawnsTr;
             }
         }
     }

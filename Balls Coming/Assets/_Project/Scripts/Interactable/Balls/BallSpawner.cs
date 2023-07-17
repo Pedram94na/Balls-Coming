@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using BallsComing.Interactable.Balls.BallsData;
+using BallsComing.Core;
 
 namespace BallsComing.Balls
 {
@@ -9,12 +10,13 @@ namespace BallsComing.Balls
         private BallsParent[] ballsArr;
         private int ballsArrLength;
 
-        BallsParent newBall;
-        int ballsArrIndex;
+        private Transform spawnsTr;
 
         private void Awake()
         {
             SetBallsArr();
+
+            spawnsTr = GameObject.Find("Spawns").transform;
         }
 
         private void SetBallsArr()
@@ -55,15 +57,18 @@ namespace BallsComing.Balls
 
         private void SpawnBalls()
         {
-            ballsArrIndex = Random.Range(0, ballsArrLength);
-            newBall = ballsArr[ballsArrIndex];
+            int ballsArrIndex = Random.Range(0, ballsArrLength);
+            BallsParent newBall = ballsArr[ballsArrIndex];
 
-            if (newBall != null)
+            if (GetGameStats() == 0 && newBall != null)
             {
                 newBall.SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot);
-                
-                Instantiate(newBall.GetBallObj(), spawnPos, spawnRot);
+
+                GameObject newBallObj = Instantiate(newBall.GetBallObj(), spawnPos, spawnRot);
+                newBallObj.transform.parent = spawnsTr;
             }
         }
+
+        private int GetGameStats() { return (int)GameManager.gameStats; }
     }
 }

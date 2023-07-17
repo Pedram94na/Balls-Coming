@@ -37,6 +37,7 @@ namespace BallsComing.Core
             gameStats = GameStats.paused;
 
             playerPowerUpsStats = PlayerPowerUps.norm;
+            playerPowerDownsStats = PlayerPowerDowns.norm;
         }
 
         #region Game Stats Setters
