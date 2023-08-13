@@ -56,7 +56,8 @@ namespace BallsComing.Interactable.Collectables
         private void Start()
         {
             InvokeRepeating(nameof(SpawnCoins), 5f, 3f);
-            InvokeRepeating(nameof(SpawnPowerups), 30f, 50f);
+            InvokeRepeating(nameof(SpawnPowerups), 30f, 40f);
+            //InvokeRepeating(nameof(SpawnPowerups), 5f, 12f); // test
         }
 
         private void SpawnCoins()
@@ -76,14 +77,21 @@ namespace BallsComing.Interactable.Collectables
         {
             int collectablesArrIndex = Random.Range(1, collectablesArrLength);
             newCollectables = collectablesArr[collectablesArrIndex];
-
+            //GameObject obj = GameObject.Find("Slowdown"); // test
             if (newCollectables != null)
             {
                 newCollectables.SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot);
 
                 GameObject newCollectableObj = Instantiate(newCollectables.GetCollectableObj(), spawnPos, spawnRot);
+                //Instantiate(obj, spawnPos, spawnRot); // test
                 newCollectableObj.transform.parent = spawnsTr;
             }
+        }
+
+        public void UpgradeSpeed()
+        {
+            for (int i = 0; i < collectablesArrLength; i++)
+                collectablesArr[i].UpgradeSpeed();
         }
     }
 }

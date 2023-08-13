@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using BallsComing.Interactable.Balls.BallsData;
+using BallsComing.Core;
 
 namespace BallsComing.Balls
 {
@@ -62,7 +63,7 @@ namespace BallsComing.Balls
 
         private void Update()
         {
-            if (ExcludingOriginals) MoveBalls();
+            if (ExcludingOriginals && GetGameStats() == 0) MoveBalls();
         }
 
         private void MoveBalls()
@@ -72,6 +73,10 @@ namespace BallsComing.Balls
             else transform.Translate(ball.Move());
         }
 
-        private int GetPlayerPowerupsStats() { return (int)Core.GameManager.playerPowerUpsStats; }
+        #region Getters
+        private int GetPlayerPowerupsStats() { return (int)GameManager.playerPowerUpsStats; }
+
+        private int GetGameStats() { return (int)GameManager.gameState; }
+        #endregion
     }
 }

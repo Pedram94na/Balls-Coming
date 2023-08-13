@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using System.Collections;
 
 using BallsComing.Interactable.Balls.BallsData;
+using BallsComing.Core;
 
 namespace BallsComing.Balls
 {
@@ -22,6 +23,8 @@ namespace BallsComing.Balls
             }
         }
 
+        private InvincibilityEffect playerPowerUpEffects;
+
         private BallsParent ball;
 
         [SerializeField] private UnityEvent GameOverEv;
@@ -36,6 +39,8 @@ namespace BallsComing.Balls
 
         private void Awake()
         {
+            playerPowerUpEffects = GameObject.Find("Game Manager").GetComponent<InvincibilityEffect>();
+
             GetBallInstance();
 
             SetOriginalBallsArray();
@@ -94,6 +99,7 @@ namespace BallsComing.Balls
                 switch (i)
                 {
                     case 0:
+                    case 3:
                         StartCoroutine(PlayerExplosion());
 
                         break;
@@ -102,29 +108,35 @@ namespace BallsComing.Balls
                         Destroy(gameObject);
 
                         break;
+
+                    case 2:
+                    default:
+                        break;
                 }
             }
         }
 
         private IEnumerator PlayerExplosion()
         {
-            playerGFX.SetActive(false);
-            playerExplosionEffect.Play();
+            playerPowerUpEffects.RestoreOriginalTexture();
 
+            playerGFX.SetActive(false);
+
+            playerExplosionEffect.Play();
+            
             GameOverEv.Invoke();
 
             yield return new WaitForSeconds(1f);
             
             Destroy(player);
 
-            Destroy(gameObject);
             Destroy(ballsOriginal);
         }
 
         #region Getters
         private bool GetIsFallingBall() { return ball.IsFallingBall(); }
 
-        private int GetPlayerPowerupsStats() { return (int)Core.GameManager.playerPowerUpsStats; }
+        private int GetPlayerPowerupsStats() { return (int)GameManager.playerPowerUpsStats; }
         #endregion
     }
 }

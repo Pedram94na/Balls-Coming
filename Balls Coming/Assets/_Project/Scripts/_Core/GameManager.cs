@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.Events;
+
+using System.Collections;
 
 namespace BallsComing.Core
 {
 	public class GameManager : MonoBehaviour
 	{
-        public enum GameStats
+        [SerializeField] private UnityEvent InvincibilityEffectEve;
+
+        [SerializeField] private UnityEvent powerUpEndsEve;
+        [SerializeField] private UnityEvent powerUpProgressBarEve;
+
+        public enum GameState
         {
 			playing = 0,
 			paused = 1,
 			gameover = 2
         }
-        public static GameStats gameStats;
+        public static GameState gameState;
 
         public enum PlayerPowerUps
         {
@@ -34,7 +42,7 @@ namespace BallsComing.Core
 
         private void Awake()
         {
-            gameStats = GameStats.paused;
+            gameState = GameState.paused;
 
             playerPowerUpsStats = PlayerPowerUps.norm;
             playerPowerDownsStats = PlayerPowerDowns.norm;
@@ -43,17 +51,17 @@ namespace BallsComing.Core
         #region Game Stats Setters
         public void SetPlayingStat()
         {
-            gameStats = GameStats.playing;
+            gameState = GameState.playing;
         }
 
         public void SetPauseStat()
         {
-            gameStats = GameStats.paused;
+            gameState = GameState.paused;
         }
 
         public void SetGameOverStat()
         {
-            gameStats = GameStats.gameover;
+            gameState = GameState.gameover;
         }
         #endregion
 
@@ -61,6 +69,8 @@ namespace BallsComing.Core
         public void SetInvincibleStats()
         {
             playerPowerUpsStats = PlayerPowerUps.invincibile;
+
+            InvincibilityEffectEve.Invoke();
 
             StartCoroutine(PowerUpReset());
         }
@@ -79,10 +89,13 @@ namespace BallsComing.Core
             StartCoroutine(PowerUpReset());
         }
 
-        private System.Collections.IEnumerator PowerUpReset()
+        private IEnumerator PowerUpReset()
         {
+            powerUpProgressBarEve.Invoke();
+
             yield return new WaitForSeconds(powerUpTimer);
 
+            powerUpEndsEve.Invoke();
             playerPowerUpsStats = PlayerPowerUps.norm;
         }
         #endregion
@@ -109,7 +122,7 @@ namespace BallsComing.Core
             StartCoroutine(PowerDownReset());
         }
 
-        private System.Collections.IEnumerator PowerDownReset()
+        private IEnumerator PowerDownReset()
         {
             yield return new WaitForSeconds(powerUpTimer);
 

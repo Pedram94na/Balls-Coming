@@ -1,35 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-using BallsComing.Interactable.Collectables.CollectablesData;
-
 namespace BallsComing.Interactable.Collectables
 {
 	public class CollectablesDespawner : MonoBehaviour
 	{
-        [SerializeField] private UnityEvent collectabelEve;
-
-        private CollectablesParent collectable;
+        [SerializeField] private UnityEvent collectableEve;
+        
+        private AudioSource collectableAudio;
 
         private void Awake()
         {
-            GetCollectablesInstance();
-        }
-        
-        private void GetCollectablesInstance()
-        {
-            collectable = name.Split("(")[0] switch
-            {
-                "Coin" => Coin.GetInstance(),
-
-                "Invincibility" => Invincibility.GetInstance(),
-
-                "Destroyer" => Destroyer.GetInstance(),
-
-                "Slowdown" => Slowdown.GetInstance(),
-
-                _ => null,
-            };
+            collectableAudio = GetComponent<AudioSource>();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -38,7 +20,7 @@ namespace BallsComing.Interactable.Collectables
 
             if (collision.gameObject.CompareTag("Player"))
             {
-                collectabelEve.Invoke();
+                collectableEve.Invoke();
 
                 Destroy(gameObject);
             }

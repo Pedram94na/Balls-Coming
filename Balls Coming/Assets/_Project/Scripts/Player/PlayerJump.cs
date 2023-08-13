@@ -1,11 +1,12 @@
 using UnityEngine;
 
+using BallsComing.Core;
+
 namespace BallsComing.Player
 {
 	public class PlayerJump : MonoBehaviour
 	{
-        private bool CanJump => Input.GetButton("Jump") && isGrounded;
-        private bool IsJumping => playerJumpStats == PlayerJumpStats.jumping;
+        private bool CanJump => IsJumping() && isGrounded;
 
         [SerializeField] private float jumpForce = 300f;
 
@@ -31,6 +32,8 @@ namespace BallsComing.Player
 
         private void FixedUpdate()
         {
+            if (GetGameStats() == 2) playerRb.constraints = RigidbodyConstraints.FreezePositionY;
+
             if (CanJump) Jump();
         }
 
@@ -55,6 +58,10 @@ namespace BallsComing.Player
             }
         }
 
-        private int PlayerPowerDownGetter() { return (int)Core.GameManager.playerPowerDownsStats; }
+        #region Getters
+        private int GetGameStats() { return (int)GameManager.gameState; }
+
+        private static bool IsJumping() { return InputManager.Instance.JumpingInput(); }
+        #endregion
     }
 }

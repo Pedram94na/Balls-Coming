@@ -42,7 +42,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public abstract Vector3 MoveSlow();
 
-        public void UpgradeSpeed() { speed += 2; }
+        public void UpgradeSpeed() { speed += 1; }
 
         #region Checkers
         public virtual bool IsRedBall() { return false; }

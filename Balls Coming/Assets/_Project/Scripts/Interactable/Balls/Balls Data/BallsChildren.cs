@@ -19,7 +19,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override void SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot)
         {
-            float spawnPosX = Random.Range(-10f, 10f);
+            float spawnPosX = Random.Range(-8.7f, 8.7f);
             float spawnPosY = 7f;
             spawnPos = new Vector3(spawnPosX, spawnPosY, 0);
 
@@ -28,7 +28,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override Vector3 Move() { return speed * Time.deltaTime * Vector3.down; }
 
-        public override Vector3 MoveSlow() { return (speed - 2f) * Time.deltaTime * Vector3.down; }
+        public override Vector3 MoveSlow() { return (speed - 1f) * Time.deltaTime * Vector3.down; }
 
         public override bool IsRedBall() { return true; }
 
@@ -54,7 +54,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override void SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot)
         {
-            float spawnPosX = Random.Range(-10f, 10f);
+            float spawnPosX = Random.Range(-8.7f, 8.7f);
             float spawnPosY = 7f;
             spawnPos = new Vector3(spawnPosX, spawnPosY, 0);
 
@@ -63,7 +63,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override Vector3 Move() { return speed * Time.deltaTime * Vector3.down; }
 
-        public override Vector3 MoveSlow() { return (speed - 2f) * Time.deltaTime * Vector3.down; }
+        public override Vector3 MoveSlow() { return (speed - 1f) * Time.deltaTime * Vector3.down; }
 
         public override bool IsGreenBall() { return true; }
 
@@ -89,7 +89,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override void SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot)
         {
-            float spawnPosX = Random.Range(-10f, 10f);
+            float spawnPosX = Random.Range(-8.7f, 8.7f);
             float spawnPosY = 7f;
             spawnPos = new Vector3(spawnPosX, spawnPosY, 0);
 
@@ -98,7 +98,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override Vector3 Move() { return speed * Time.deltaTime * Vector3.down; }
 
-        public override Vector3 MoveSlow() { return (speed - 2f) * Time.deltaTime * Vector3.down; }
+        public override Vector3 MoveSlow() { return (speed - 1f) * Time.deltaTime * Vector3.down; }
 
         public override bool IsYellowBall() { return true; }
 
@@ -133,7 +133,7 @@ namespace BallsComing.Interactable.Balls.BallsData
 
         public override Vector3 Move() { return speed * Time.deltaTime * Vector3.left; }
 
-        public override Vector3 MoveSlow() { return (speed - 2f) * Time.deltaTime * Vector3.left; }
+        public override Vector3 MoveSlow() { return (speed - 1f) * Time.deltaTime * Vector3.left; }
 
         public override bool IsBlueBall() { return true; }
 

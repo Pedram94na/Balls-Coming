@@ -62,6 +62,8 @@ namespace BallsComing.Interactable.Collectables
 
         private void Update()
         {
+            if (GetGameStats() == 2) Destroy(this);
+
             if (ExcludingOriginals) MoveCollectables();
         }
 
@@ -69,5 +71,9 @@ namespace BallsComing.Interactable.Collectables
         {
             transform.Translate(collectables.Move());
         }
+
+        #region Getters
+        private int GetGameStats() { return (int)Core.GameManager.gameState; }
+        #endregion
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
 
+using BallsComing.Core;
+
 namespace BallsComing.Player
 {
 	public class PlayerMovement : MonoBehaviour
 	{
-        [SerializeField] private float speed = 10f;
+        private float speed = 10f;
 
         public enum PlayerMovementStats
         {
@@ -20,32 +22,38 @@ namespace BallsComing.Player
 
         private void Update()
         {
-            InputCheck();
+            if (GetGameStats() != 2) InputCheck(GetMovementDirection());
         }
 
-        private void InputCheck()
+        private void InputCheck(float x)
         {
-            float x = Input.GetAxis("Horizontal");
-
             if (x != 0) Move(x);
 
             if (x == 0) playerMovementStats = PlayerMovementStats.idle;
         }
 
-        private Vector3 Move(float x)
+        private void Move(float x)
         {
-            if (PlayerPowerDownGetter() == 1) x = -x;
-
-            speed = 10f;
-
             Vector3 move = speed * Time.deltaTime * x * Vector3.right;
             transform.Translate(move);
 
             playerMovementStats = PlayerMovementStats.moving;
-
-            return move;
         }
 
-        private int PlayerPowerDownGetter() { return (int)Core.GameManager.playerPowerDownsStats; }
+        public void PlayerSpeedChange()
+        {
+            speed = 20f;
+        }
+
+        public void RestorePlayerSpeed()
+        {
+            speed = 10f;
+        }
+
+        #region Getters
+        private static float GetMovementDirection() { return InputManager.Instance.HorizontalInput(); }
+
+        private int GetGameStats() { return (int)GameManager.gameState; }
+        #endregion
     }
 }

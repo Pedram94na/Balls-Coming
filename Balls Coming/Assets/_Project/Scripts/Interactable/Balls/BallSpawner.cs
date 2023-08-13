@@ -12,6 +12,8 @@ namespace BallsComing.Balls
 
         private Transform spawnsTr;
 
+        private float spawnRepeatRate = 1f;
+
         private void Awake()
         {
             SetBallsArr();
@@ -30,6 +32,8 @@ namespace BallsComing.Balls
 
                 ballsArr[i] = CreatingBalls(ballObj);
             }
+
+            ballsArrLength--;
         }
 
         private BallsParent CreatingBalls(GameObject ballObj)
@@ -52,7 +56,7 @@ namespace BallsComing.Balls
 
         private void Start()
         {
-            InvokeRepeating(nameof(SpawnBalls), 5f, 1f);
+            InvokeRepeating(nameof(SpawnBalls), 5f, spawnRepeatRate);
         }
 
         private void SpawnBalls()
@@ -69,6 +73,19 @@ namespace BallsComing.Balls
             }
         }
 
-        private int GetGameStats() { return (int)GameManager.gameStats; }
+        public void UpgradeSpeed()
+        {
+            for (int i = 0; i < ballsArrLength; i++)
+                ballsArr[i].UpgradeSpeed();
+        }
+
+        public void BlueBallsCanSpawn()
+        {
+            ballsArrLength++;
+        }
+
+        #region Getters
+        private int GetGameStats() { return (int)GameManager.gameState; }
+        #endregion
     }
 }

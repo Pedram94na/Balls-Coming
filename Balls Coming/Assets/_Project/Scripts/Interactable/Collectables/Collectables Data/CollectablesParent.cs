@@ -22,11 +22,13 @@ namespace BallsComing.Interactable.Collectables.CollectablesData
 
         #region Getters
         public GameObject GetCollectableObj() { return collectable; }
+
+        public float GetCollectableSpeed() { return speed; }
         #endregion
 
         public void SpawnPreparation(out Vector3 spawnPos, out Quaternion spawnRot)
         {
-            float spawnPosX = Random.Range(-10f, 10f);
+            float spawnPosX = Random.Range(-8.7f, 8.7f);
             float spawnPosY = 7f;
             spawnPos = new Vector3(spawnPosX, spawnPosY, 0);
 
@@ -35,7 +37,7 @@ namespace BallsComing.Interactable.Collectables.CollectablesData
 
         public Vector3 Move() { return speed * Time.deltaTime * Vector3.down; }
 
-        //public void UpgradeSpeed() { speed += 2; }
+        public void UpgradeSpeed() { speed += 1; }
 
         #region Checkers
         public virtual bool IsCoin() { return false; }
